@@ -1,9 +1,11 @@
-- hosts: test
+- hosts: all
 
   remote_user: bismart
   tasks:
 
   - name: remover servicios innecesari
     yum:
-      name: telnet-server
-      state: absent
+      list: telnet-server
+      register: logsout
+
+  - debug: msg="{{ logout.stdout }}"

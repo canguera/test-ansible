@@ -1,12 +1,11 @@
 - hosts: all
-  became: true
-  became_user: bismart
   tasks:
 
   - name: remover servicios innecesari
+    became: true
     yum:
       list: telnet-server
-      register: logsout
+      register: logsou
 
   - debug:
       var: logsout

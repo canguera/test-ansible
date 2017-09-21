@@ -7,6 +7,5 @@
   - name: "Habilitar servicio crond-Autenticacion - anacron y cron"
     service:
       name: crond
-      enable: yes
+      enabled: yes
       state: started
-  

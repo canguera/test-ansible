@@ -4,8 +4,11 @@
   tasks:
 
   - name: remover servicios innecesari
+    sudo: yes
     yum:
       list: telnet-server
       register: logsout
 
-  - debug: msg="{{ logout.stdout }}"
+  - debug:
+      var: logsout
+    

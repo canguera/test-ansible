@@ -1,0 +1,10 @@
+- hosts: all
+  tasks:
+  - name: "Eliminar servicios innecesarios"
+    yum:
+      name: "{{ item }}" 
+      state: absent
+    with_items:
+        - ypbind
+        - talk
+        - rsh

@@ -2,6 +2,15 @@
   become: yes
   become_user: bismart
   tasks:
+  - name: "Validar si existe servcios"
+    command: rpm -q {{ item }}
+    register: listar
+    failed_when: listar.rc > 1
+    changed_when: no
+    with_items:
+        - telnet-server
+        - telnet
+
   - name: "Eliminar servicios innecesarios"
     yum:
       name: "{{ item }}"
@@ -9,4 +18,7 @@
     with_items:
         - telnet-server
         - telnet
-        
+    when: listar.rc == 0
+
+  - debug:
+            var: listar

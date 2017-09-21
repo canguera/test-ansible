@@ -6,7 +6,7 @@
     become_user: bismart
     yum:
       list: telnet-server
-      register: logsou
+    register: logsout
 
   - debug:
       var: logsout

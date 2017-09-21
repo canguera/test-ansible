@@ -1,8 +1,10 @@
 - hosts: all
+  become: yes
+  become_user: bismart
   tasks:
   - name: "Eliminar servicios innecesarios"
     yum:
-      name: "{{ item }}" 
+      name: "{{ item }}"
       state: absent
     with_items:
         - ypbind

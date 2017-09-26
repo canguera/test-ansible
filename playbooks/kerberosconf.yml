@@ -1,7 +1,6 @@
 - hosts: workers
-  become: yes
-  become_user: bismart
+  remote_user: bismart
 
   tasks:
   - name: "Reemplazar fichero krb5"
-    template: src= /home/bismart/test-ansible/templates/krb5.conf.j2 dest= /etc/krb5.conf
+    template: src=/home/bismart/test-ansible/templates/krb5.conf.j2 dest=/etc/krb5.conf

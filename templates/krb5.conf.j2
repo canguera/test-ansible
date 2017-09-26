@@ -1,0 +1,22 @@
+[logging]
+ default = FILE:/var/log/krb5libs.log
+ kdc = FILE:/var/log/krb5kdc.log
+ admin_server = FILE:/var/log/kadmind.log
+[libdefaults]
+ default_realm = ADGBS.COM
+ dns_lookup_realm = false
+ dns_lookup_kdc = false
+ ticket_lifetime = 24h
+ renew_lifetime = 7d
+ forwardable = true
+[realms]
+ ADGBS.COM = {
+  kdc = lavion.adgbs.com
+  kdc = tasarau.adgbs.com
+  kdc = luminor.adgbs.com
+  kdc = yumi.adgbs.com
+ admin_server = lavion.adgbs.com
+ }
+[domain_realm]
+ .adgbs.com = ADGBS.COM
+ adgbs.com = ADGBS.COM

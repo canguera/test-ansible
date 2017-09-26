@@ -5,10 +5,7 @@
 
   tasks:
   - name: "Crear archivo sssd"
-    file:
-    path: /etc/sssd/sssd.conf
-    state: touch
-    mode: 0600
+    file: path=/etc/sssd/sssd.conf state=touch
 
   - name: "Reemplazar fichero sssd"
     template: src=/home/bismart/test-ansible/templates/sssd.conf.j2 dest=/etc/sssd/sssd.conf

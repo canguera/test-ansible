@@ -1,0 +1,8 @@
+- hosts: workers
+  remote_user: bismart
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: "Reemplazar fichero hosts"
+    template: src=/home/bismart/test-ansible/templates/hosts.j2 dest=/etc/hosts

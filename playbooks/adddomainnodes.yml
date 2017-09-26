@@ -5,7 +5,7 @@
 
   tasks:
 
-  - name: "Deshabilitar SELINUX"
+  - name: "Añadir disabled en ficchero SELINUX"
     lineinfile: path=/etc/selinux/config regexp='^SELINUX=' line='SELINUX=disabled'
 
   - name: "Reemplazar fichero resolv"
@@ -13,6 +13,9 @@
 
   - name: "Reemplazar fichero hosts"
     template: src=/home/bismart/test-ansible/templates/hostsnodes.j2 dest=/etc/hosts
+
+  - name: "Añadir server ntp en fichero ntp.conf"
+    lineinfile: path=/etc/ntp.conf regexp='^Please consider ' insertafter='^#Please consider ' line='server ntp0.bancsabadell.com'
 
   - name: "Reemplazar fichero krb5"
     template: src=/home/bismart/test-ansible/templates/krb5.conf.j2 dest=/etc/krb5.conf

@@ -3,7 +3,7 @@
   become_user: bismart
 
   tasks:
-  - name: "Reemplazar fichero krb5"
+  - name: Reemplazar fichero krb5
     template:
     src: /home/bismart/test-ansible/templates/krb5.conf.j2
     dest: /etc/krb5.conf

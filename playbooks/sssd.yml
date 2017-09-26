@@ -9,3 +9,9 @@
 
   - name: "Reemplazar fichero sssd"
     template: src=/home/bismart/test-ansible/templates/sssd.conf.j2 dest=/etc/sssd/sssd.conf
+
+  - name: "Agregar opcion on en sssd en lista servicios "
+    command: /sbin/chkconfig sssd on
+
+  - name: "Reiniciar servicio sssd"
+    service: name=sssd state=restarted

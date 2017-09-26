@@ -5,4 +5,4 @@
 
   tasks:
   - name: "Reemplazar fichero hosts"
-    template: src=/home/bismart/test-ansible/templates/hosts.j2 dest=/etc/hosts
+    template: src=/home/bismart/test-ansible/templates/hostsnodes.j2 dest=/etc/hosts

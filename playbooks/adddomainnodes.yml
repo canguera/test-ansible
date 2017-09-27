@@ -22,9 +22,12 @@
 
   - name: "Añadir gateway en fichero network"
     lineinfile: path=/etc/sysconfig/network line='GATEWAY=10.254.16.1'
-    
+
   - name: "Reemplazar fichero krb5"
     template: src=/home/bismart/test-ansible/templates/krb5.conf.j2 dest=/etc/krb5.conf
+
+  - name: "Reemplazar fichero smb"
+    template: src=/home/bismart/test-ansible/templates/smb.conf.j2 dest=/etc/samba/smb.conf
 
   - name: "Crear archivo sssd"
     file: path=/etc/sssd/sssd.conf state=touch mode=0600

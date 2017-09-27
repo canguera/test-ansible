@@ -17,6 +17,9 @@
   - name: "Añadir server ntp en fichero ntp.conf"
     lineinfile: path=/etc/ntp.conf regexp='^Please consider ' insertafter='^#Please consider ' line='server ntp0.bancsabadell.com'
 
+  - name: "Agregar opcion on en ntp en lista servicios "
+    command: /sbin/chkconfig ntpd on
+
   - name: "Reemplazar fichero krb5"
     template: src=/home/bismart/test-ansible/templates/krb5.conf.j2 dest=/etc/krb5.conf
 

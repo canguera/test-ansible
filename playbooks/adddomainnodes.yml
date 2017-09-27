@@ -26,6 +26,16 @@
   - name: "Reemplazar fichero krb5"
     template: src=/home/bismart/test-ansible/templates/krb5.conf.j2 dest=/etc/krb5.conf
 
+  - name: "Instalar samba"
+    yum: pkg={{ item }} state=installed
+    environment: proxy_env
+    with_items:
+   - samba
+   - samba-client
+   - samba-common
+   - samba-winbind
+   - samba-winbind-clients
+
   - name: "Reemplazar fichero smb"
     template: src=/home/bismart/test-ansible/templates/smb.conf.j2 dest=/etc/samba/smb.conf
 

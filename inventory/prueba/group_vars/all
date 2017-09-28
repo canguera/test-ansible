@@ -7,3 +7,17 @@ HOSTS:
   - { ip: 10.254.16.28, name: xzdbdwb01wedl}
   - { ip: 10.254.16.29, name: xzdbdwm01wedl}
   - { ip: 10.254.16.35, name: xzdbdgw01wedl}
+  - { ip: 172.31.3.86, name: hadopc1r}
+  - { ip: 172.30.29.1, name: ntp0.bancsabadell.com}
+  - { ip: 172.22.172.10, name: lavion.adgbs.com}
+  - { ip: 172.22.172.129, name: tasarau.adgbs.com}
+  - { ip: 172.17.100.16, name: luminor.adgbs.com}
+  - { ip: 172.17.150.71, name: yumi.adgbs.com}
+
+RESOLV:
+  - { texto: domain adgbs.com }
+  - { name: nameserver, ip: 10.255.31.44 }
+  - { name: nameserver, ip: 172.22.172.10 }
+  - { name: nameserver, ip: 172.22.172.129 }
+  - { name: nameserver, ip: 172.17.100.16 }
+  - { name: nameserver, ip: 172.17.150.71 }

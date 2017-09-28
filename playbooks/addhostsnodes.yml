@@ -1,8 +1,0 @@
-- hosts: workers
-  remote_user: bismart
-  become: yes
-  become_method: sudo
-
-  tasks:
-  - name: "Reemplazar fichero hosts"
-    lineinfile: path=/etc/httpd/conf/httpd.conf regexp='^Listen ' insertafter='^#Listen ' line='Listen 8080'

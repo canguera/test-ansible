@@ -1,0 +1,9 @@
+- hosts: workers
+  remote_user: bismart
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Añadir disabled en ficchero SELINUX"
+    lineinfile: path=/etc/selinux/config regexp='^SELINUX=' line='SELINUX=disabled'

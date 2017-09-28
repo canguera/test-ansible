@@ -6,4 +6,8 @@
   tasks:
 
   - name: "Añadir disabled en ficchero SELINUX"
-    lineinfile: path=/etc/selinux/config regexp='^SELINUX=' line='SELINUX=disabled'
+    selinux:
+      state: disabled
+
+  - name: "enforcing"
+    command: "setenforce 0"

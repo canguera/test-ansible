@@ -13,3 +13,4 @@
 
   - name: "enforcing"
     command: "setenforce 0"
+    ignore_errors: yes

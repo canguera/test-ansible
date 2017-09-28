@@ -15,10 +15,6 @@ HOSTS:
   - { ip: 172.17.150.71, name: yumi.adgbs.com}
 
 RESOLV:
-  - { name: nameserver, ip: 10.255.31.44 }
-  - { name: nameserver, ip: 172.22.172.10 }
-  - { name: nameserver, ip: 172.22.172.129 }
-  - { name: nameserver, ip: 172.17.100.16 }
-  - { name: nameserver, ip: 172.17.150.71 }
+  - { name: nameserver, ip: 168.63.129.16 }
 
-DOMAIN: "adgbs.com" 
+DOMAIN: "fmv4ncc5avde5lfbjxek4bqbva.ax.internal.cloudapp.net"

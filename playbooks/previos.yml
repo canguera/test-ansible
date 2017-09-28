@@ -5,6 +5,9 @@
 
   tasks:
 
+  - name: "Instalar paquete libselinux-python"
+    yum: name=libselinux-python state=present
+
   - name: "Añadir disabled en ficchero SELINUX"
     selinux: state=disabled
 

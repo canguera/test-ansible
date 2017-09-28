@@ -1,7 +1,7 @@
 # This file managed by ansible
 # currently unused
 
-{{item.texto}}
 {% for item in RESOLV %}
 {{item.name}} {{item.ip}}
 {% endfor %}
+domain {{DOMAIN}}

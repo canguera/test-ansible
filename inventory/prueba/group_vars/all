@@ -1,0 +1,9 @@
+HOSTS:
+  - { ip: 10.254.16.32, name: xzdbdmc01wedl}
+  - { ip: 10.254.16.24, name: xzdbdwh01wedl}
+  - { ip: 10.254.16.25, name: xzdbdwh02wedl}
+  - { ip: 10.254.16.26, name: xzdbdkf01wedl}
+  - { ip: 10.254.16.27, name: xzdbdmb01wedl}
+  - { ip: 10.254.16.28, name: xzdbdwb01wedl}
+  - { ip: 10.254.16.29, name: xzdbdwm01wedl}
+  - { ip: 10.254.16.35, name: xzdbdgw01wedl}

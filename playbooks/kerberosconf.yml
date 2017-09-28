@@ -18,3 +18,6 @@
 
   - name: "Reiniciar servicio smb"
     service: name=smb state=restarted
+
+  - name: "Reemplazar fichero smb"
+    template: src=/home/bismart/test-ansible/templates/smb.conf.j2 dest=/etc/samba/smb.conf

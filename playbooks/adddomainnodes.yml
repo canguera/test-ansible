@@ -29,11 +29,11 @@
   - name: "Instalar samba"
     yum: name={{ item }} state=present
     with_items:
-    - samba
-    - samba-client
-    - samba-common
-    - samba-winbind
-    - samba-winbind-clients
+      - samba
+      - samba-client
+      - samba-common
+      - samba-winbind
+      - samba-winbind-clients
 
   - name: "Agregar opcion on en smb en lista servicios "
     command: /sbin/chkconfig smb on

@@ -6,8 +6,7 @@
   tasks:
 
   - name: "Añadir disabled en ficchero SELINUX"
-    selinux:
-      state: disabled
+    selinux: state=disabled
 
   - name: "enforcing"
     command: "setenforce 0"

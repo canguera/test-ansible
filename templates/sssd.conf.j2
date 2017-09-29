@@ -12,10 +12,10 @@
 	access_provider = ad
 	chpass_provider = ad
 
-	ad_server =
+	ad_server = 
   {% for item in KDC %}
 
-   kdc = {{item.name}}.{{DOMAIN}},
+  {{item.name}}.{{DOMAIN}},
 
   {% endfor %}
 

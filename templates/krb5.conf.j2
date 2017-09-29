@@ -3,25 +3,22 @@
  kdc = FILE:/var/log/krb5kdc.log
  admin_server = FILE:/var/log/kadmind.log
 [libdefaults]
- default_realm = ADGBS.COM
+ default_realm = {{DOMAINUP}}
  dns_lookup_realm = false
  dns_lookup_kdc = false
  ticket_lifetime = 24h
  renew_lifetime = 7d
  forwardable = true
 [realms]
- ADGBS.COM = {
+ {{DOMAINUP}} = {
  {% for item in KDC %}
 
   kdc = {{item.name}}.{{DOMAIN}}
-  kdc = {{item.name}}.{{DOMAIN}}
-  kdc = {{item.name}}.{{DOMAIN}}
-  kdc = {{item.name}}.{{DOMAIN}}
 
  {% endfor %}
- admin_server = lavion.adgbs.com
+ admin_server = {{item.name}}.{{DOMAIN}}
  }
 [domain_realm]
- .adgbs.com = ADGBS.COM
- adgbs.com = ADGBS.COM
- TTTT1
+ .{{DOMAIN}} = {{DOMAINUP}}
+  {{DOMAIN}} = {{DOMAINUP}}
+ TTTT2

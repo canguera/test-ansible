@@ -20,3 +20,5 @@ KDC:
   - { name: tasarau}
   - { name: luminor}
   - { name: yumi}
+
+KDCMASTER: "lavion"

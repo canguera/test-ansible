@@ -11,6 +11,8 @@ DOMAIN: "fmv4ncc5avde5lfbjxek4bqbva.ax.internal.cloudapp.net"
 
 DOMAINUP: "ADGBS.COM"
 
+DOMI: "ADGBS"
+
 NTP: "server ntp0.bancsabadell.com"
 
 GATEWY: "10.0.0.1"

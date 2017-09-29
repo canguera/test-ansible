@@ -2,7 +2,7 @@
 # smb.conf(5) manual page in order to understand the options listed
 # here. Samba has a huge number of configurable options (perhaps too
 # many!) most of which are not shown in this example
-#
+# ttt
 # For a step to step guide on installing, configuring and using samba,
 # read the Samba-HOWTO-Collection. This may be obtained from:
 #  http://www.samba.org/samba/docs/Samba-HOWTO-Collection.pdf
@@ -69,7 +69,7 @@
 # Hosts Allow/Hosts Deny lets you restrict who can connect, and you can
 # specifiy it as a per share option as well
 #
-        workgroup =ADGBS
+        workgroup ={{DOMI}}
         server string = Samba Server Version %v
         client signing = yes
         client use spnego = yes
@@ -115,7 +115,7 @@
         kerberos method = secrets and keytab
         security = ads
 ;       passdb backend = tdbsam
-        realm = ADGBS.COM
+        realm = {{DOMAINUP}}
 ;       password server = <NT-Server-Name>
 # ----------------------- Domain Controller Options ------------------------
 #

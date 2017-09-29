@@ -1,0 +1,23 @@
+- hosts: workers
+  remote_user: bismart
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: "Instalar samba"
+    yum: name={{ item }} state=present
+    with_items:
+      - samba
+      - samba-client
+      - samba-common
+      - samba-winbind
+      - samba-winbind-clients
+
+  - name: "Agregar opcion on en smb en lista servicios "
+    command: /sbin/chkconfig smb on
+
+  - name: "Reemplazar fichero smb"
+    template: src=/home/bismart/test-ansible/templates/smb.conf.j2 dest=/etc/samba/smb.conf
+
+  - name: "Reiniciar servicio smb"
+    service: name=smb state=restarted

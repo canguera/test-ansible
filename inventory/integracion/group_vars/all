@@ -22,3 +22,6 @@ HOSTS:
     - { name: nameserver, ip: 172.17.150.71 }
 
   DOMAIN: "adgbs.com"
+
+  NTP: "server ntp0.bancsabadell.com"
+  

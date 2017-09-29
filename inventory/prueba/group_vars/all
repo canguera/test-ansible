@@ -16,7 +16,7 @@ NTP: "server ntp0.bancsabadell.com"
 GATEWY: "10.0.0.1"
 
 KDC:
-  - { name: lavion }
-  - { name: tasarau }
-  - { name: luminor }
-  - { name: yumi }
+  - { name: lavion}
+  - { name: tasarau}
+  - { name: luminor}
+  - { name: yumi}

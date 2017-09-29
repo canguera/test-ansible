@@ -25,6 +25,8 @@ HOSTS:
 
   DOMAINUP: "ADGBS.COM"
 
+  DOMI: "ADGBS"
+
   NTP: "server ntp0.bancsabadell.com"
 
   GATEWY: "10.254.16.1"

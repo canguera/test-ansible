@@ -2,7 +2,7 @@
 	services = nss, pam
 	domains = default
 	debug_level=9
-
+  ttt
 	[nss]
 
 	[pam]
@@ -12,8 +12,14 @@
 	access_provider = ad
 	chpass_provider = ad
 
-	ad_server = lavion.adgbs.com,tasarau.adgbs.com,luminor.adgbs.com,yumi.adgbs.com
-	ad_hostname = {{ansible_nodename}}.adgbs.com
+	ad_server =
+  {% for item in KDC %}
+
+   kdc = {{item.name}}.{{DOMAIN}},
+
+  {% endfor %}
+
+	ad_hostname = {{ansible_nodename}}.{{DOMAIN}}
 	ad_domain = adgbs.com
 
 	override_homedir = /home/%u

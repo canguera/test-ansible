@@ -11,10 +11,13 @@
  forwardable = true
 [realms]
  ADGBS.COM = {
-  kdc = {{KDC}}.{{DOMAIN}}
-  kdc = tasarau.adgbs.com
-  kdc = luminor.adgbs.com
-  kdc = yumi.adgbs.com
+ {% for item in KDC %}
+
+  kdc = {{item.name}}.{{DOMAIN}}
+  kdc = {{item.name}}.{{DOMAIN}}
+  kdc = {{item.name}}.{{DOMAIN}}
+  kdc = {{item.name}}.{{DOMAIN}}
+ {% endfor %}
  admin_server = lavion.adgbs.com
  }
 [domain_realm]

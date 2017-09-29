@@ -7,3 +7,10 @@
 
   - name: "Añadir server ntp en fichero ntp.conf"
     lineinfile: path=/etc/ntp.conf regexp='^Please consider ' insertafter='^#Please consider ' line='{{NTP}}'
+
+  - name: "Agregar opcion on en ntp en lista servicios "
+    command: /sbin/chkconfig ntpd on
+
+  - name: "Reiniciar servicio ntpd "
+    service: name=ntpd state=restarted
+    

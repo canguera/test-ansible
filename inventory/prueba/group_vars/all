@@ -8,3 +8,5 @@ RESOLV:
   - { name: nameserver, ip: 168.63.129.16 }
 
 DOMAIN: "fmv4ncc5avde5lfbjxek4bqbva.ax.internal.cloudapp.net"
+
+NTP: "server ntp0.bancsabadell.com"

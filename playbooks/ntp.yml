@@ -1,0 +1,9 @@
+- hosts: workers
+  remote_user: bismart
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Añadir server ntp en fichero ntp.conf"
+    lineinfile: path=/etc/ntp.conf regexp='^Please consider ' insertafter='^#Please consider ' line='{{NTP}}'

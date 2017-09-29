@@ -16,7 +16,7 @@
   kdc = {{item.name}}.{{DOMAIN}}
 
  {% endfor %}
- admin_server = {{item.name}}.{{DOMAIN}}
+ admin_server = {{KDC.name}}.{{DOMAIN}}
  }
 [domain_realm]
  .{{DOMAIN}} = {{DOMAINUP}}

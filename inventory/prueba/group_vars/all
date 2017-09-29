@@ -9,6 +9,11 @@ RESOLV:
 
 DOMAIN: "fmv4ncc5avde5lfbjxek4bqbva.ax.internal.cloudapp.net"
 
+DOMAINUP: "TEST..COM"
+
 NTP: "server ntp0.bancsabadell.com"
 
 GATEWY: "10.0.0.1"
+
+KDC:
+  - { name: lavion.{{DOMAIN}} }

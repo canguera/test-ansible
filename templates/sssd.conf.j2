@@ -12,15 +12,17 @@
 	access_provider = ad
 	chpass_provider = ad
 
-	ad_server = 
+
+  {% set servers = "" %}
   {% for item in KDC %}
 
-  {{item.name}}.{{DOMAIN}},
-
+  {{servers}} = {{servers}} + {{item.name}} + "." + {{DOMAIN}} + {% "" if loop.last else "," %} 
   {% endfor %}
 
+ad_server =
+
 	ad_hostname = {{ansible_nodename}}.{{DOMAIN}}
-	ad_domain = adgbs.com
+	ad_domain = {{DOMAIN}}
 
 	override_homedir = /home/%u
 	override_shell = /bin/bash

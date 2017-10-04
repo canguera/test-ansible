@@ -15,8 +15,9 @@
 
   {% set servers = "" %}
   {% for item in KDC %}
-
-  {% set servers %} = {{ servers }} + {{item.name}} + "." + {{DOMAIN}} + {% "" if loop.last else "," %} 
+    {%
+      set servers  = {{ servers }} + {{item.name}} + "." + {{DOMAIN}} +  "" if loop.last else "," 
+    %}
   {% endfor %}
 
 ad_server =

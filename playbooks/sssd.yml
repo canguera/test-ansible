@@ -8,7 +8,7 @@
     file: path=/etc/sssd/sssd.conf state=touch mode=0600
 
   - name: "Reemplazar fichero sssd"
-    template: src=/home/bismart/test-ansible/templates/sssd.conf.j2 dest=/etc/sssd/sssd.conf
+    template: src=../templates/sssd.conf.j2 dest=/etc/sssd/sssd.conf
 
   - name: "Agregar opcion on en sssd en lista servicios "
     command: /sbin/chkconfig sssd on

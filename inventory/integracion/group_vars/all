@@ -1,13 +1,14 @@
 HOSTS:
-  - { ip: 10.254.16.32, name: xzdbdmc01wedl}
-  - { ip: 10.254.16.24, name: xzdbdwh01wedl}
-  - { ip: 10.254.16.25, name: xzdbdwh02wedl}
-  - { ip: 10.254.16.26, name: xzdbdkf01wedl}
-  - { ip: 10.254.16.27, name: xzdbdmb01wedl}
-  - { ip: 10.254.16.28, name: xzdbdwb01wedl}
-  - { ip: 10.254.16.29, name: xzdbdwm01wedl}
-  - { ip: 10.254.16.35, name: xzdbdgw01wedl}
-  - { ip: 172.31.3.86, name: hadopc1r}
+  - { ip: 10.254.16.32, fqdn: xzdbdmc01wedl.bancsabadell}
+  - { ip: 10.254.16.24, fqdn: xzdbdwh01wedl.bancsabadell}
+  - { ip: 10.254.16.25, fqdn: xzdbdwh02wedl.bancsabadell}
+  - { ip: 10.254.16.26, fqdn: xzdbdkf01wedl.bancsabadell}
+  - { ip: 10.254.16.27, fqdn: xzdbdmb01wedl.bancsabadell}
+  - { ip: 10.254.16.28, fqdn: xzdbdwb01wedl.bancsabadell}
+  - { ip: 10.254.16.29, fqdn: xzdbdwm01wedl.bancsabadell}
+  - { ip: 10.254.16.35, fqdn: xzdbdgw01wedl.bancsabadell}
+  - { ip: 10.254.16.7, fqdn: zxdbdop01wedl}
+  - { ip: 172.31.3.86, name: hadopc1r.bancsabadell}
   - { ip: 172.30.29.1, name: ntp0.bancsabadell.com}
   - { ip: 172.22.172.10, name: lavion.adgbs.com}
   - { ip: 172.22.172.129, name: tasarau.adgbs.com}
@@ -21,11 +22,15 @@ HOSTS:
     - { name: nameserver, ip: 172.17.100.16 }
     - { name: nameserver, ip: 172.17.150.71 }
 
+  PLAYBOOK_HOSTS: "all"
+
   DOMAIN: "adgbs.com"
 
   DOMAINUP: "ADGBS.COM"
 
   DOMI: "ADGBS"
+
+  DOMAINTWO: "bancsabadell.com"
 
   NTP: "server ntp0.bancsabadell.com"
 

@@ -6,8 +6,8 @@
   tasks:
   - name: "Reemplazar ficher resolv"
     template:
-      src=/home/bismart/test-ansible/templates/resolv.conf.j2
-      dest=/etc/resolv.conf 
+      src=../templates/resolv.conf.j2
+      dest=/etc/resolv.conf
       backup=true
       mode=0644
       owner=root

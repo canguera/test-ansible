@@ -1,0 +1,10 @@
+- hosts: workers
+  remote_user: bismart
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Añadir la serach y domain en fichero ifcfg-eth0"
+    lineinfile: path=/etc/sysconfig/network-scripts/ifcfg-eth0 line='DOMAIN={{DOMAINTWO}}'
+    lineinfile: path=/etc/sysconfig/network-scripts/ifcfg-eth0 line='SEARCH={{DOMAINTWO}}'

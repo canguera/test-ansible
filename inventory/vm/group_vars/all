@@ -22,7 +22,9 @@ RESOLV:
   - { name: nameserver, ip: 172.17.100.16 }
   - { name: nameserver, ip: 172.17.150.71 }
 
-PLAYBOOK_HOSTS: "all"
+PLAYBOOK_HOSTS: "nodo"
+
+BECOME_USER: "canguera"
 
 DOMAIN: "adgbs.com"
 

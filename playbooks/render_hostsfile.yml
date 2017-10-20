@@ -1,15 +1,15 @@
 
-- hosts: {{ PLAYBOOK_HOSTS }}
-  remote_user: bismart
+- hosts: "nodo"
+  remote_user: "canguera"
   become: yes
   become_method: sudo
 
   tasks:
-  - name: "Reemplazar fichero hosts"
-    template:
-      src=../templates/hosts.j2
-      dest=/etc/hosts
-      backup=true
-      mode=0644
-      owner=root
-      group=root
+    - name: "Reemplazar fichero hosts"
+      template:
+        src=../templates/hosts.j2
+        dest=/etc/hosts
+        backup=true
+        mode=0644
+        owner=root
+        group=root

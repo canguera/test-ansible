@@ -1,9 +1,8 @@
-- hosts: workers
-  remote_user: bismart
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
   become: yes
   become_method: sudo
 
   tasks:
-
   - name: "Añadir la gateway en fichero network"
     lineinfile: path=/etc/sysconfig/network line='GATEWAY={{GATEWY}}'

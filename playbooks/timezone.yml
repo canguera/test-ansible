@@ -1,0 +1,9 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: "Cambio Time zone Europe/Madrid"
+    timezone:
+      name: Europe/Madrid

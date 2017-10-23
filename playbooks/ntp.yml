@@ -1,10 +1,9 @@
-- hosts: workers
-  remote_user: bismart
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
   become: yes
   become_method: sudo
 
   tasks:
-
   - name: "Añadir server ntp en fichero ntp.conf"
     lineinfile: path=/etc/ntp.conf regexp='^Please consider ' insertafter='^#Please consider ' line='{{NTP}}'
 
@@ -13,4 +12,3 @@
 
   - name: "Reiniciar servicio ntpd "
     service: name=ntpd state=restarted
-    

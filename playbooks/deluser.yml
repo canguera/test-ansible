@@ -1,0 +1,42 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: "Eliminar usuarios"
+    user:
+      name: "{{ item.name }}"
+      state: absent
+      remove: yes
+    with_items:
+      - { name: 'c998122' }
+      - { name: 'r025517' }
+      - { name: 'v361642' }
+      - { name: 'd678934' }
+      - { name: 'b611506' }
+      - { name: 'w285850' }
+      - { name: 'k869492' }
+      - { name: 't564760' }
+      - { name: 'p811379' }
+      - { name: 'x062980' }
+      - { name: 'r594249' }
+      - { name: 'd653364' }
+      - { name: 'd724532' }
+      - { name: 'r391860' }
+      - { name: 'n095167' }
+      - { name: 'd236328' }
+      - { name: 't531962' }
+      - { name: 'svc_s_bscluster' }
+      - { name: 'svc_s_bscollector' }
+      - { name: 'svc_s_bsportal' }
+      - { name: 'svc_s_explo' }
+
+  - name: "Eliminar grupos"
+    group:
+      name: "{{ item.namegroup }}"
+      state: absent
+    with_items:
+      - { namegroup: 'bsadminint' }
+      - { namegroup: 'bsportalsint' }
+      - { namegroup: 'bsprocessorsint' }

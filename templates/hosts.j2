@@ -5,5 +5,5 @@
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 {% for item in HOSTS %}
-{{item.ip}} {{item.name}}
+{{item.ip}} {{item.fqdn}}
 {% endfor %}

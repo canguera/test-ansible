@@ -1,15 +1,14 @@
-
-- hosts: "nodo"
-  remote_user: "canguera"
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
   become: yes
   become_method: sudo
-
+  
   tasks:
     - name: "Reemplazar fichero hosts"
       template:
-        src=../templates/hosts.j2
-        dest=/etc/hosts
-        backup=true
-        mode=0644
-        owner=root
-        group=root
+        src: ../templates/hosts.j2
+        dest: /etc/hosts
+        backup: true
+        mode: 0644
+        owner: root
+        group: root

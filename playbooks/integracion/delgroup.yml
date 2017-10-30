@@ -1,0 +1,16 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: "Eliminar grupos"
+    group:
+      name: "{{ item.namegroup }}"
+      state: absent
+    with_items:
+      - { namegroup: 'bsadminint' }
+      - { namegroup: 'bsportalsint' }
+      - { namegroup: 'bsprocessorsint' }
+      - { namegroup: 'bscollectorsint' }
+      - { namegroup: 'bsdevelopersint' }

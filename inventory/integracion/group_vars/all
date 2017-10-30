@@ -21,6 +21,9 @@ RESOLV:
   - { name: nameserver, ip: 172.22.172.129 }
   - { name: nameserver, ip: 172.17.100.16 }
   - { name: nameserver, ip: 172.17.150.71 }
+  - { name: nameserver, ip: 172.29.0.1 }
+  - { name: nameserver, ip: 172.30.0.1 }
+
 
 CLOUDERA_USERS:
   - { name: cloudera-scm }
@@ -70,4 +73,4 @@ KDC:
   - { name: luminor}
   - { name: yumi}
 
-KDCMASTER: "lavion"
+KDCMASTER: "tasarau"

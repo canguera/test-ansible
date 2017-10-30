@@ -40,3 +40,5 @@
       - { namegroup: 'bsadminint' }
       - { namegroup: 'bsportalsint' }
       - { namegroup: 'bsprocessorsint' }
+      - { namegroup: 'bscollectorsint' }
+      - { namegroup: 'bsdevelopersint' }

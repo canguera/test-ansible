@@ -10,6 +10,10 @@
   - name: "Añadir disabled en ficchero SELINUX"
     selinux: state=disabled
 
-  - name: "enforcing"
-    command: "setenforce 0"
-    ignore_errors: yes
+  #- name: "enforcing"
+  #  command: "setenforce 0"
+  #  ignore_errors: yes
+
+  - name: "Cambio Time zone Europe/Madrid"
+    timezone:
+        name: Europe/Madrid

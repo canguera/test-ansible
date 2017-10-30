@@ -1,0 +1,55 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: "Añadir en fichero /etc/bashrc linea umask 077"
+    lineinfile: path=/etc/bashrc line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/colorls.csh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/colorls.sh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/cvs.csh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/cvs.sh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/glib2.csh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/glib2.sh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/lang.csh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/lang.sh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/less.csh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/less.sh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/qt.csh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/qt.sh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/vim.csh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/vim.sh line={{UNMASCARA}}
+
+  - name: "Añadir en ficheros /etc/profile/* linea umask 077"
+    lineinfile: path=/etc/profile.d/which2.sh line={{UNMASCARA}}
+
+    

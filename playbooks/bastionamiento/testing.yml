@@ -5,5 +5,15 @@
 
   tasks:
 
-  - name: "Insertar en ficheros /etc/ssh/sshd AllowUsers"
-    lineinfile: path=/etc/ssh/sshd_config line='AllowUsers={{BECOME_USER}}'
+  - name: "Crear file y asignar permisos en fichero motd"
+    file: path=/etc/motd state=touch owner=root group=root mode=644
+
+  - name: "Reemplazar fichero sssd"
+    template: src=../../templates/motd.j2 dest=/etc/motd
+
+  - name: "Modificar owner y permis fichero issue"
+    file: path=/etc/issue owner=root group=root mode=644
+
+  - name: "Modificar owner y permis fichero issue.net"
+    file: path=/etc/issue.net owner=root group=root mode=644
+    

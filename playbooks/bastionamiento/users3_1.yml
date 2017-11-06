@@ -23,7 +23,7 @@
     when: item not in userexcept
 
   - name: "Establecer grupo por defecto a root"
-    shell: "usermod -g 0 root"
+    shell: usermod -g 0 root
 
   - name: "Añadir en fichero /etc/bashrc linea umask 077"
     lineinfile: path=/etc/bashrc line={{UNMASCARA}}
@@ -92,4 +92,3 @@
   - name: "Forzar politicas de maxday usuarios vigentes menos root"
     shell: chage --maxdays 45 --mindays 1 --warndays 7 "{{ item }}"
     with_items: "{{ users_to_lock.stdout_lines }}"
-    

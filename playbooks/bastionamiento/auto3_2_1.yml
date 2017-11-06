@@ -1,0 +1,145 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Modificar owner y permis de servicio anacrotab"
+    file: path=/etc/anacrontab owner=root group=root mode="o=rwx,g=rwx"
+
+  - name: "Modificar owner y permis de servicio crontab"
+    file: path=/etc/crontab owner=root group=root mode="o=rwx,g=rwx"
+
+  - name: "Modificar owner y permis de servicio cronhourly"
+    file: path=/etc/cron.hourly owner=root group=root mode="o=rwx,g=rwx"
+
+  - name: "Modificar owner y permis de servicio crondaily"
+    file: path=/etc/cron.daily owner=root group=root mode="o=rwx,g=rwx"
+
+  - name: "Modificar owner y permis de servicio cronweekly"
+    file: path=/etc/cron.weekly owner=root group=root mode="o=rwx,g=rwx"
+
+  - name: "Modificar owner y permis de servicio cronmontly"
+    file: path=/etc/cron.monthly owner=root group=root mode="o=rwx,g=rwx"
+
+  - name: "Modificar owner y permis de servicio crond"
+    file: path=/etc/cron.d owner=root group=root mode="o=rwx,g=rwx"
+
+  - name: "Elimina at.deny"
+    file: path=/etc/at.deny state=absent
+
+  - name: "Elimina cron.deny"
+    file: path=/etc/cron.deny state=absent
+
+  - name: "Crear file y asignar own at.allow"
+    file: path=/etc/at.allow state=touch owner=root group=root mode="u=rw,o=rwx,g=rwx"
+
+  - name: "Modificar owner y permis de servicio cro.allow"
+    file: path=/etc/cron.allow state=directory owner=root group=root mode="u=rwx,o=rwx,g=rwx"
+
+  - name: "Insertar Protocol 2"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#Protocol'
+      line: 'Protocol 2'
+      state: present
+
+  - name: "Insertar Log Level"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#LogLevel'
+      line: 'LogLevel INFO'
+      state: present
+
+  - name: "Insertar X11Forwardi"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#X11Forwarding'
+      line: 'X11Forwarding no'
+      state: present
+
+  - name: "Insertar Log MaxAuth"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#MaxAuthTries'
+      line: 'MaxAuthTries 4'
+      state: present
+
+  - name: "Insertar IgnoreR"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#IgnoreRhosts'
+      line: 'IgnoreRhosts yes'
+      state: present
+
+  - name: "Insertar Log HostBased"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#HostbasedAuthentication'
+      line: 'HostbasedAuthentication no'
+      state: present
+
+  - name: "Insertar PermitR"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#PermitRootLogin'
+      line: 'PermitRootLogin no'
+      state: present
+
+  - name: "Insertar Log PermitEmp"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#PermitEmptyPasswords'
+      line: 'PermitEmptyPasswords no'
+      state: present
+
+  - name: "Insertar PermitU"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#PermitUserEnvironment'
+      line: 'PermitUserEnvironment no'
+      state: present
+
+  - name: "Insertar Ciphe en sshd"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#Ciphers'
+      line: 'Ciphers aes128-ctr,aes192-ctr,aes256-ctr'
+      state: present
+
+  - name: "Insertar ClientA"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#ClientAliveInterval'
+      line: 'ClientAliveInterval 300'
+      state: present
+
+  - name: "Insertar ClientAC"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#ClientAliveCountMax'
+      line: 'ClientAliveCountMax 0'
+      state: present
+
+  - name: "Insertar Banner issue"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^#Banner'
+      line: 'Banner /etc/issue.net'
+      state: present
+
+  - name: "Modificar owner y permis de sshd"
+    file: path=/etc/ssh/sshd_config owner=root group=root mode=600
+
+#  - name: "Modificar parametro pamwhell"
+#    pamd:
+#      name: su
+#      type: auth
+#      control: sufficient
+#      module_path: pam_rootok.so
+#      new_type: auth
+#      new_control: required
+#      new_module_path: pam_wheel.so
+#      module_arguments: 'use_uid'
+#      state: after

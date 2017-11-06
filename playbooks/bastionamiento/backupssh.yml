@@ -1,0 +1,11 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: "Copy fichero sshd en otra ruta local"
+    archive:
+      path:
+        - /etc/ssh/sshd_config
+      dest: /root/bkup_sshd_conf.tar.gz

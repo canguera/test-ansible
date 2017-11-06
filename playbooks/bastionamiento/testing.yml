@@ -4,10 +4,6 @@
   become_method: sudo
 
   tasks:
-  - name: "Obtener lista user"
-    shell: "awk -F: '{print $1}' /etc/passwd | grep -v root"
-    register: users_to_lock
 
-  - name: "Forzar politicas de maxday usuarios vigentes menos root"
-    shell: chage --maxdays 45 --mindays 1 --warndays 7 "{{ item }}"
-    with_items: "{{ users_to_lock.stdout_lines }}"
+  - name: "Insertar en ficheros /etc/ssh/sshd AllowUsers"
+    lineinfile: path=/etc/ssh/sshd_config line='AllowUsers={{BECOME_USER}}'

@@ -5,15 +5,62 @@
 
   tasks:
 
-  - name: "Crear file y asignar permisos en fichero motd"
-    file: path=/etc/motd state=touch owner=root group=root mode=644
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^net.ipv4.ip_forward'
+      line: 'net.ipv4.ip_forward = 0'
+      state: present
 
-  - name: "Reemplazar fichero sssd"
-    template: src=../../templates/motd.j2 dest=/etc/motd
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.all.send_redirects = 0'
 
-  - name: "Modificar owner y permis fichero issue"
-    file: path=/etc/issue owner=root group=root mode=644
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.default.send_redirects = 0'
 
-  - name: "Modificar owner y permis fichero issue.net"
-    file: path=/etc/issue.net owner=root group=root mode=644
-    
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.all.accept_source_route = 0'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^net.ipv4.conf.default.accept_source_route'
+      line: 'net.ipv4.conf.default.accept_source_route = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.all.accept_redirects = 0'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.default.accept_redirects = 0'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.all.secure_redirects = 0'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.default.secure_redirects = 0'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.all.log_martians = 1'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.default.log_martians = 1'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.route.flush = 1'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.icmp_echo_ignore_broadcasts = 1'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.icmp_ignore_bogus_error_responses = 1'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile: path=/etc/ssh/sshd_config line='net.ipv4.conf.all.rp_filter = 1'
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/ssh/sshd_config
+      regexp: '^net.ipv4.tcp_syncookies'
+      line: 'net.ipv4.tcp_syncookies = 1'
+      state: present

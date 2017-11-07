@@ -1,0 +1,25 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Crear file y asignar permisos en fichero motd"
+    file: path=/etc/motd state=touch owner=root group=root mode=644
+
+  - name: "Reemplazar fichero motd"
+    template: src=../../templates/motd.j2 dest=/etc/motd
+
+  - name: "Modificar owner y permis fichero issue"
+    file: path=/etc/issue owner=root group=root mode=644
+
+  - name: "Reemplazar fichero issue"
+    template: src=../../templates/issue.j2 dest=/etc/issue
+
+
+  - name: "Modificar owner y permis fichero issue.net"
+    file: path=/etc/issue.net owner=root group=root mode=644
+
+  - name: "Reemplazar fichero issue.net"
+    template: src=../../templates/issue_net.j2 dest=/etc/issue.net

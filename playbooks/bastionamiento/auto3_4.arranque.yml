@@ -1,0 +1,20 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Cambio var Single"
+    lineinfile:
+      path: /etc/sysconfig/init
+      regexp: '^SINGLE'
+      line: 'SINGLE=/sbin/sulogin'
+      state: present
+
+  - name: "Deshabilita PROMP"
+    lineinfile:
+      path: /etc/sysconfig/init
+      regexp: '^PROMP'
+      line: 'PROMP=no'
+      state: present

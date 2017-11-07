@@ -10,3 +10,15 @@
         - /etc/passwd
         - /etc/shadow
       dest: /root/bkup_passwd_shadow.tar.gz
+
+  - name: "Copy fichero sshd en otra ruta local"
+    archive:
+      path:
+        - /etc/ssh/sshd_config
+      dest: /root/bkup_sshd_conf.tar.gz
+
+  - name: "Copy fichero sshd en otra ruta local"
+    archive:
+      path:
+        - /etc/sysctl.conf
+      dest: /root/bkup_sysctl_conf.tar.gz

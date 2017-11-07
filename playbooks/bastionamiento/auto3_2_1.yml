@@ -147,16 +147,4 @@
   - name: "Modificar owner y permis fichero grub"
     file: path=/boot/grub/grub.conf owner=root group=root mode=700
 
-  - name: "Cambio var Single"
-    lineinfile:
-      path: /etc/sysconfig/init
-      regexp: '^SINGLE'
-      line: 'SINGLE=/sbin/sulogin'
-      state: present
-
-  - name: "Deshabilita PROMP"
-    lineinfile:
-      path: /etc/sysconfig/init
-      regexp: '^PROMP'
-      line: 'PROMP=no'
-      state: present
+  

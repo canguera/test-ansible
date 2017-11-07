@@ -24,6 +24,10 @@ RESOLV:
   - { name: nameserver, ip: 172.29.0.1 }
   - { name: nameserver, ip: 172.30.0.1 }
 
+  DNS:
+  - { name: nameserver, ip: 172.29.0.1 }
+  - { name: nameserver, ip: 172.30.0.1 }
+
 
 CLOUDERA_USERS:
   - { name: cloudera-scm }

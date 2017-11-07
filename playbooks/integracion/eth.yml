@@ -5,6 +5,9 @@
 
   tasks:
 
-  - name: "Añadir la serach y domain en fichero ifcfg-eth0"
+  - name: "Insertar domain en fichero ifcfg-eth0"
     lineinfile: path=/etc/sysconfig/network-scripts/ifcfg-eth0 line='DOMAIN={{DOMAINTWO}}'
+
+
+  - name: "Añadir la search en fichero ifcfg-eth0"
     lineinfile: path=/etc/sysconfig/network-scripts/ifcfg-eth0 line='SEARCH={{DOMAINTWO}}'

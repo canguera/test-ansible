@@ -1,0 +1,157 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.ip_forward'
+      line: 'net.ipv4.ip_forward = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.all.send_redirects'
+      line: 'net.ipv4.conf.all.send_redirects = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.default.send_redirects'
+      line: 'net.ipv4.conf.default.send_redirects = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.all.accept_source_route'
+      line: 'net.ipv4.conf.all.accept_source_route = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.default.accept_source_route'
+      line: 'net.ipv4.conf.default.accept_source_route = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.all.accept_redirects'
+      line: 'net.ipv4.conf.all.accept_redirects = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.default.accept_redirects'
+      line: 'net.ipv4.conf.default.accept_redirects = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.all.secure_redirects'
+      line: 'net.ipv4.conf.all.secure_redirects = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.default.secure_redirects'
+      line: 'net.ipv4.conf.default.secure_redirects = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.all.log_martians'
+      line: 'net.ipv4.conf.all.log_martians = 1'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.default.log_martians'
+      line: 'net.ipv4.conf.default.log_martians = 1'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.route.flush'
+      line: 'net.ipv4.route.flush = 1'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.icmp_echo_ignore_broadcasts'
+      line: 'net.ipv4.icmp_echo_ignore_broadcasts = 1'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.icmp_ignore_bogus_error_responses'
+      line: 'net.ipv4.icmp_ignore_bogus_error_responses = 1'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.conf.all.rp_filter'
+      line: 'net.ipv4.conf.all.rp_filter = 1'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^net.ipv4.tcp_syncookies'
+      line: 'net.ipv4.tcp_syncookies = 1'
+      state: present
+
+  - name: "Insertar vars en network"
+    lineinfile:
+      path: /etc/sysconfig/network
+      regexp: '^NETWORKING_IPV6'
+      line: 'NETWORKING_IPV6=no'
+      state: present
+
+  - name: "Insertar vars en network"
+    lineinfile:
+      path: /etc/sysconfig/network
+      regexp: '^IPV6INIT'
+      line: 'IPV6INIT=no'
+      state: present
+
+  - name: "Instalar tcp wrappers"
+    yum: name=tcp_wrappers state=present
+
+  - name: "Crear file ipv6.conf"
+    file: path=/etc/modprobe.d/ipv6.conf state=touch owner=root group=root
+
+  - name: "Insertar vars en ipv6.conf"
+    lineinfile:
+      path: /etc/modprobe.d/ipv6.conf
+      regexp: '^options ipv6 disable'
+      line: 'options ipv6 disable=1'
+      state: present
+
+  - name: "Inhabilitar protocolos de redes no necesarias"
+    shell: echo "install dccp /bin/true" >> /etc/modprobe.d/bastionado.conf
+
+  - name: "Inhabilitar protocolos de redes no necesarias"
+    shell: echo "install sctp /bin/true" >> /etc/modprobe.d/bastionado.conf
+
+  - name: "Inhabilitar protocolos de redes no necesarias"
+    shell: echo "install rds /bin/true" >> /etc/modprobe.d/bastionado.conf
+
+  - name: "Inhabilitar protocolos de redes no necesarias"
+    shell: echo "install tipc /bin/true" >> /etc/modprobe.d/bastionado.conf

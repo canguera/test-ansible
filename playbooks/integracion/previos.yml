@@ -16,4 +16,4 @@
 
   - name: "Cambio Time zone Europe/Madrid"
     timezone:
-        name: Europe/Madrid
+      name: Europe/Madrid

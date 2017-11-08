@@ -1,0 +1,12 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Eliminar services security"
+    yum: name=setroubleshoot state=absent
+
+  - name: "Eliminar services security"
+    yum: name=mcstrans state=absent

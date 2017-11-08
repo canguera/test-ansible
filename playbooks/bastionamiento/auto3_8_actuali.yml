@@ -1,0 +1,12 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Agregar opcion off en rhnsd en lista servicios "
+    command: /sbin/chkconfig rhnsd off
+
+  - name: "Actaulizar "
+    yum: name='*' state=latest

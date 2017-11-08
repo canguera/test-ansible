@@ -1,0 +1,103 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Eliminar services inecesario"
+    yum: name=telnet-server state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=telnet state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=rsh-server state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=ypbind state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=ypserv state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=tftp state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=tftp-server state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=talk state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=talk-server state=absent
+
+  - name: "Insertar vars en fichero sysconfig/init"
+    lineinfile:
+      path: /etc/sysconfig/init
+      regexp: '^umask 027'
+      line: 'umask 027'
+      state: present
+
+  - name: "Modificar var en fichero inittab"
+    lineinfile:
+      path: /etc/inittab
+      regexp: '^id:3:initdefault'
+      line: 'id:3:initdefault:'
+      state: present
+
+  - name: "Eliminar services inecesario"
+    yum: name=xorg-x11-server-common state=removed
+
+  - name: "Agregar opcion off en nfs en lista servicios "
+    command: /sbin/chkconfig nfslock off
+
+  - name: "Agregar opcion off en rpcgss en lista servicios "
+    command: /sbin/chkconfig rpcgssd off
+
+  - name: "Agregar opcion off en rpcbin en lista servicios "
+    command: /sbin/chkconfig rpcbind off
+
+  - name: "Agregar opcion off en rpcidmap en lista servicios "
+    command: /sbin/chkconfig rpcidmapd off
+
+  - name: "Agregar opcion off en rpcsvc en lista servicios "
+    command: /sbin/chkconfig rpcsvcgssd off
+
+  - name: "Eliminar services inecesario"
+    yum: name=bind state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=vsftpd state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=dovecot state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=squid state=absent
+
+  - name: "Eliminar services inecesario"
+    yum: name=net-smnp state=absent
+
+  - name: "Agregar opcion off en cups en lista servicios "
+    command: /sbin/chkconfig cups off
+
+  - name: "Eliminar vars en fichero sysconfig/network"
+    lineinfile:
+      path: /etc/sysconfig/network
+      regexp: '^zeroconf'
+      state: absent
+
+  - name: "Modificar var en fichero ntp"
+    lineinfile:
+      path: /etc/ntp.conf
+      regexp: '^restrict default kod nomodify notrap nopeer noquery'
+      line: 'restrict default kod nomodify notrap nopeer noquery'
+      state: present
+
+  - name: "Modificar var en fichero ntp2"
+    lineinfile:
+      path: /etc/ntp.conf
+      regexp: '^restrict -6 default kod nomodify notrap nopeer noquery'
+      line: 'restrict -6 default kod nomodify notrap nopeer noquery'
+      state: present

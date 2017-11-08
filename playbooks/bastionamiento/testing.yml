@@ -5,8 +5,50 @@
 
   tasks:
 
-  - name: "Eliminar services security"
-    yum: name=setroubleshoot state=absent
+  - name: "Insertar vars en fichero limits"
+    lineinfile:
+      path: /etc/security/limits.conf
+      regexp: '^hard core 0'
+      line: '* hard core 0'
+      state: present
 
-  - name: "Eliminar services security"
-    yum: name=mcstrans state=absent
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^fs.suid_dumpable'
+      line: 'fs.suid_dumpable = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^kernel.exec-shield'
+      line: 'kernel.exec-shield = 1'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^kernel.randomize_va_space'
+      line: 'kernel.randomize_va_space = 2'
+      state: present
+
+  - name: "Modificar owner y permis de fichero passw"
+    file: path=/etc/passwd owner=root group=root mode=644
+
+  - name: "Modificar owner y permis de fichero shadow"
+    file: path=/etc/shadow owner=root group=root mode=000
+
+  - name: "Modificar owner y permis de fichero gshado "
+    file: path=/etc/gshadow owner=root group=root mode=000
+
+  - name: "Modificar owner y permis de fichero group"
+    file: path=/etc/group owner=root group=root mode=644
+
+  - name: "Obtener lista legacy +"
+    shell: "awk  grep '^+:' /etc/passwd"
+    register: legacy_to_lock
+
+  - name: "Bloquear users"
+    shell: rm -f "{{ item }}"
+    with_items: "{{ lega_to_lock.stdout_lines }}"

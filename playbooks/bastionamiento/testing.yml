@@ -33,10 +33,21 @@
       line: 'admin_space_left_action = halt'
       state: present
 
-
   - name: "Insertar vars en fichero audit"
     lineinfile:
       path: /etc/audit/auditd.conf
       regexp: '^max_log_file_action'
       line: 'max_log_file_action = keep_logs'
       state: present
+
+  - name: "Agregar opcion on en audit en lista servicios "
+    command: /sbin/chkconfig auditd on
+
+  - name: "Insertar vars en fichero grub.conf"
+    lineinfile:
+      path: /etc/grub.conf
+      backup: True
+      backrefs: True
+      state: present
+      regexp: '(^\s+kernel(\s+(?!audit=1)[\w=/\-\.]+)*)\s*$'
+      line: '\1 audit=1'

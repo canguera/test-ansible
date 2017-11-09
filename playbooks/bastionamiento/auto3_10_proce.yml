@@ -1,0 +1,76 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+  - name: "Insertar vars en fichero limits"
+    lineinfile:
+      path: /etc/security/limits.conf
+      regexp: '^hard core 0'
+      line: '* hard core 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^fs.suid_dumpable'
+      line: 'fs.suid_dumpable = 0'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^kernel.exec-shield'
+      line: 'kernel.exec-shield = 1'
+      state: present
+
+  - name: "Insertar vars en fichero sysctl"
+    lineinfile:
+      path: /etc/sysctl.conf
+      regexp: '^kernel.randomize_va_space'
+      line: 'kernel.randomize_va_space = 2'
+      state: present
+
+  - name: "Modificar owner y permis de fichero passw"
+    file: path=/etc/passwd owner=root group=root mode=644
+
+  - name: "Modificar owner y permis de fichero shadow"
+    file: path=/etc/shadow owner=root group=root mode=000
+
+  - name: "Modificar owner y permis de fichero gshado "
+    file: path=/etc/gshadow owner=root group=root mode=000
+
+  - name: "Modificar owner y permis de fichero group"
+    file: path=/etc/group owner=root group=root mode=644
+
+  - name: "Obtener lista legacy +"
+    shell: "grep '^+' /etc/passwd | awk -F: '{ print $1 }'"
+    register: legacy_to_lock
+
+  - name: "Comprobar lista"
+    debug:
+        msg: "{{ legacy_to_lock.stdout_lines }}"
+
+  - name: "Eliminar usuarios encontrado en legacy_to_lock"
+    user:
+      name: "{{ item }}"
+      state: absent
+      remove: yes
+    with_items: "{{ legacy_to_lock.stdout_lines }}"
+
+  - name: "Obtener lista usuarios con UID 0 menos root"
+    shell: "grep -v root /etc/passwd | awk -F: '$3 = 0 { print $3 }'"
+    register: user_to_lock
+
+  - name: "Comprobar lista"
+    debug:
+      msg: "{{ user_to_lock.stdout_lines }}"
+
+  - name: "Eliminar usuarios encontrado con UID 0"
+    user:
+      name: "{{ item }}"
+      state: absent
+      remove: yes
+    with_items: "{{ user_to_lock.stdout_lines }}"

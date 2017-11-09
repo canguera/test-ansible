@@ -32,6 +32,34 @@
   - name: "Eliminar services inecesario"
     yum: name=talk-server state=absent
 
+  - name: "Agregar opcion off en charge en lista servicios "
+    command: /sbin/chkconfig chargen-dgram off
+    ignore_errors: yes
+
+  - name: "Agregar opcion off en charges en lista servicios "
+    command: /sbin/chkconfig chargen-stream off
+    ignore_errors: yes
+
+  - name: "Agregar opcion off en daytime en lista servicios "
+    command: /sbin/chkconfig daytime-dgram off
+    ignore_errors: yes
+
+  - name: "Agregar opcion off en daytimes en lista servicios "
+    command: /sbin/chkconfig daytime-stream off
+    ignore_errors: yes
+
+  - name: "Agregar opcion off en echo en lista servicios "
+    command: /sbin/chkconfig echo-dgram off
+    ignore_errors: yes
+
+  - name: "Agregar opcion off en echost en lista servicios "
+    command: /sbin/chkconfig echo-stream off
+    ignore_errors: yes
+
+  - name: "Agregar opcion off en tcpmux en lista servicios "
+    command: /sbin/chkconfig tcpmux-server off
+    ignore_errors: yes
+
   - name: "Insertar vars en fichero sysconfig/init"
     lineinfile:
       path: /etc/sysconfig/init
@@ -81,6 +109,9 @@
 
   - name: "Agregar opcion off en cups en lista servicios "
     command: /sbin/chkconfig cups off
+
+  - name: "Eliminar services inecesario"
+    yum: name=dhcp state=absent
 
   - name: "Eliminar vars en fichero sysconfig/network"
     lineinfile:

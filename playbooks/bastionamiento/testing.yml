@@ -5,49 +5,13 @@
 
   tasks:
 
-  - name: "Insertar vars en fichero audit"
-    lineinfile:
-      path: /etc/audit/auditd.conf
-      regexp: '^max_log_file ='
-      line: 'max_log_file = 6'
-      state: present
+  - name: "Instalar servicio rsyslog"
+    yum:
+      name: rsyslog
+      state: latest
 
-  - name: "Insertar vars en fichero audit"
-    lineinfile:
-      path: /etc/audit/auditd.conf
-      regexp: '^space_left_action'
-      line: 'space_left_action = SYSLOG'
-      state: present
+  - name: "Agregar opcion off en syslog en lista servicios "
+    command: /sbin/chkconfig syslog off
 
-  - name: "Insertar vars en fichero audit"
-    lineinfile:
-      path: /etc/audit/auditd.conf
-      regexp: '^action_mail_acct'
-      line: 'action_mail_acct = root'
-      state: present
-
-  - name: "Insertar vars en fichero audit"
-    lineinfile:
-      path: /etc/audit/auditd.conf
-      regexp: '^admin_space_left_action'
-      line: 'admin_space_left_action = halt'
-      state: present
-
-  - name: "Insertar vars en fichero audit"
-    lineinfile:
-      path: /etc/audit/auditd.conf
-      regexp: '^max_log_file_action'
-      line: 'max_log_file_action = keep_logs'
-      state: present
-
-  - name: "Agregar opcion on en audit en lista servicios "
-    command: /sbin/chkconfig auditd on
-
-  - name: "Insertar vars en fichero grub.conf"
-    lineinfile:
-      path: /etc/grub.conf
-      backup: True
-      backrefs: True
-      state: present
-      regexp: '(^\s+kernel(\s+(?!audit=1)[\w=/\-\.]+)*)\s*$'
-      line: '\1 audit=1'
+  - name: "Agregar opcion on en rsyslog en lista servicios "
+    command: /sbin/chkconfig rsyslog on

@@ -22,3 +22,21 @@
       path:
         - /etc/sysctl.conf
       dest: /root/bkup_sysctl_conf.tar.gz
+
+  - name: "Copy fichero grub en otra ruta local"
+    archive:
+      path:
+        - /etc/grub.conf
+      dest: /root/bkup_grub_conf.tar.gz
+
+  - name: "Copy fichero audit en otra ruta local"
+    archive:
+      path:
+        - /etc/audit/auditd.conf
+      dest: /root/bkup_auditd_conf.tar.gz
+
+  - name: "Copy fichero audit rules en otra ruta local"
+    archive:
+      path:
+        - /etc/audit/audit.rules
+      dest: /root/bkup_audit_rules.tar.gz

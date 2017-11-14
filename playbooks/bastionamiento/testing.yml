@@ -12,6 +12,75 @@
 
   - name: "Agregar opcion off en syslog en lista servicios "
     command: /sbin/chkconfig syslog off
+    ignore_errors: yes
 
   - name: "Agregar opcion on en rsyslog en lista servicios "
     command: /sbin/chkconfig rsyslog on
+
+  - name: "Insertar vars en fichero rsyslog"
+    lineinfile:
+      path: /etc/rsyslog.conf
+      regexp: '^auth,user.* /var/log/messages'
+      line: 'auth,user.* /var/log/messages'
+      state: present
+
+  - name: "Insertar vars en fichero rsyslog"
+    lineinfile:
+      path: /etc/rsyslog.conf
+      regexp: '^kern.* /var/log/kern.log'
+      line: 'kern.* /var/log/kern.log'
+      state: present
+
+  - name: "Insertar vars en fichero rsyslog"
+    lineinfile:
+      path: /etc/rsyslog.conf
+      regexp: '^daemon.* /var/log/daemon.log'
+      line: 'daemon.* /var/log/daemon.log'
+      state: present
+
+  - name: "Insertar vars en fichero rsyslog"
+    lineinfile:
+      path: /etc/rsyslog.conf
+      regexp: '^syslog.* /var/log/syslog'
+      line: 'syslog.* /var/log/syslog'
+      state: present
+
+  - name: "Insertar vars en fichero rsyslog"
+    lineinfile:
+      path: /etc/rsyslog.conf
+      regexp: '^lpr,news,uucp,loca10,loca11,loca12,loca13,loca14,loca15,loca16.* /var/log/unused.log'
+      line: 'lpr,news,uucp,loca10,loca11,loca12,loca13,loca14,loca15,loca16.* /var/log/unused.log'
+      state: present
+
+  - name: "Insertar vars en fichero rsyslog"
+    lineinfile:
+      path: /etc/rsyslog.conf
+      regexp: 'ModLoad imtcp.so$'
+      line: '$ModLoad imtcp.so'
+      state: present
+
+  - name: "Insertar vars en fichero rsyslog"
+    lineinfile:
+      path: /etc/rsyslog.conf
+      regexp: 'InputTCPServerRun 514$'
+      line: '$InputTCPServerRun 514'
+      state: present
+
+  - name: "Restar servicio rsyslog"
+    service:
+      name: rsyslog
+      state: restarted
+
+  - name: "Insertar vars en fichero logrotate"
+    lineinfile:
+      path: /etc/logrotate.d
+      regexp: '^/var/log/messages /var/log/secure /var/log/mailog /var/log/spooler'
+      line: '/var/log/messages /var/log/secure /var/log/mailog /var/log/spooler'
+      state: present
+
+  #- name: "Insertar vars en fichero logrotate"
+  #  lineinfile:
+      path: /etc/logrotate.d
+      regexp: '^/var/log/boot.log /var/log/cron'
+      line: '/var/log/boot.log /var/log/cron'
+      state: present

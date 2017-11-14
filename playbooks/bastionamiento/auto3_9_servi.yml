@@ -70,7 +70,7 @@
   - name: "Modificar var en fichero inittab"
     lineinfile:
       path: /etc/inittab
-      regexp: '^id:3:initdefault'
+      regexp: '^id:3:initdefault:'
       line: 'id:3:initdefault:'
       state: present
 

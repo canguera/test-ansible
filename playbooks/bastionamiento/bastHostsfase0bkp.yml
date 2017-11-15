@@ -17,6 +17,12 @@
         - /etc/ssh/sshd_config
       dest: /root/bkup_sshd_conf.tar.gz
 
+  - name: "Copy fichero su en otra ruta local"
+    archive:
+      path:
+        - /etc/pam.d/su
+      dest: /root/bkup_pam_su.tar.gz
+
   - name: "Copy fichero sshd en otra ruta local"
     archive:
       path:

@@ -4,8 +4,14 @@
   become_method: sudo
 
   tasks:
-  - name: "Añadir server ntp en fichero ntp.conf"
-    lineinfile: path=/etc/ntp.conf regexp='^Please consider ' insertafter='^#Please consider ' line='{{NTP}}'
+
+
+  - name: "Insertar vars en fichero ntp"
+    lineinfile:
+      path: /etc/ntp.conf
+      regexp: '{{NTP}}'
+      line: '{{NTP}}'
+      state: present
 
   - name: "Agregar opcion on en ntp en lista servicios "
     command: /sbin/chkconfig ntpd on

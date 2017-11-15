@@ -70,12 +70,3 @@
     service:
       name: rsyslog
       state: restarted
-
-  - name: "Insertar vars en fichero logrotate"
-    lineinfile:
-      path: /etc/logrotate.d
-      regexp: '^/var/log/messages /var/log/secure /var/log/mailog /var/log/spooler'
-      line: '/var/log/messages /var/log/secure /var/log/mailog /var/log/spooler'
-      state: present
-
-  

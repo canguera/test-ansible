@@ -4,6 +4,12 @@
   become_method: sudo
 
   tasks:
+  - name: "Instalar paquete libselinux-python"
+    yum: name=libselinux-python state=present
+
+  - name: "Añadir disabled en ficchero SELINUX"
+    selinux: state=disabled
+
   - name: "Cambio Time zone Europe/Madrid"
     timezone:
       name: Europe/Madrid

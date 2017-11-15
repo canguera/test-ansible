@@ -1,0 +1,2 @@
+- import_playbook: /media/sf_test-ansible/playbooks/integracion/eth.yml
+- import_playbook: /media/sf_test-ansible/playbooks/integracion/ntp.yml

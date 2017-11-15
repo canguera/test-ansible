@@ -48,8 +48,8 @@
   - name: "Insertar vars en fichero rsyslog"
     lineinfile:
       path: /etc/rsyslog.conf
-      regexp: '^lpr,news,uucp,loca10,loca11,loca12,loca13,loca14,loca15,loca16.* /var/log/unused.log'
-      line: 'lpr,news,uucp,loca10,loca11,loca12,loca13,loca14,loca15,loca16.* /var/log/unused.log'
+      regexp: '^lpr,news,uucp,local0,local1,local2,local3,local4,local5,local6.* /var/log/unused.log'
+      line: 'lpr,news,uucp,local0,local1,local2,local3,local4,local5,local6.* /var/log/unused.log'
       state: present
 
   - name: "Insertar vars en fichero rsyslog"

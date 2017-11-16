@@ -1,0 +1,20 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+
+
+  - name: "Insertar vars en fichero ntp"
+    lineinfile:
+      path: /etc/ntp.conf
+      regexp: '{{NTP}}'
+      line: '{{NTP}}'
+      state: present
+
+  - name: "Agregar opcion on en ntp en lista servicios "
+    command: /sbin/chkconfig ntpd on
+
+  - name: "Reiniciar servicio ntpd "
+    service: name=ntpd state=restarted

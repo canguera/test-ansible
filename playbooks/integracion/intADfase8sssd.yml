@@ -13,5 +13,15 @@
   - name: "Agregar opcion on en sssd en lista servicios "
     command: /sbin/chkconfig sssd on
 
+  - name: "Intala el pkg oddjob­mkhomedir.x86_64 "
+    yum:
+      name: oddjob­mkhomedir.x86_64
+      state: present
+
+  - name: "Enabled and update pkg sssd"
+    shell: " authconfig ­­enablesssdauth ­­enablesssd ­­enablemkhomedir ­­update"
+
   - name: "Reiniciar servicio sssd"
     service: name=sssd state=restarted
+    ignore_errors: yes
+    

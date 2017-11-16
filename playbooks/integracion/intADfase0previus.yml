@@ -1,0 +1,57 @@
+- hosts: all
+  remote_user: "{{ BECOME_USER }}"
+  become: yes
+  become_method: sudo
+
+  tasks:
+  - name: "Instalar paquete libselinux-python"
+    yum: name=libselinux-python state=present
+
+  - name: "Añadir disabled en ficchero SELINUX"
+    selinux: state=disabled
+
+  - name: "Cambio Time zone Europe/Madrid"
+    timezone:
+      name: Europe/Madrid
+
+  - name: "Copy fichero ntp en otra ruta local"
+    archive:
+      path:
+        - /etc/ntp.conf
+      dest: /root/bkup_ntp_conf.tar.gz
+
+  - name: "Copy fichero ifcfg-eth0 en otra ruta local"
+    archive:
+      path:
+        - /etc/sysconfig/network-scripts/ifcfg-eth0
+      dest: /root/bkup_ifcfg_eth.tar.gz
+
+  - name: "Copy fichero resolv en otra ruta local"
+    archive:
+      path:
+        - /etc/resolv.conf
+      dest: /root/bkup_resolv.tar.gz
+
+  - name: "Copy fichero hosts en otra ruta local"
+    archive:
+      path:
+        - /etc/hosts
+      dest: /root/bkup_hosts.tar.gz
+
+  - name: "Copy fichero network en otra ruta local"
+    archive:
+      path:
+        - /etc/sysconfig/network
+      dest: /root/bkup_network.tar.gz
+
+  - name: "Copy fichero krb5 en otra ruta local"
+    archive:
+      path:
+        - /etc/krb5.conf
+      dest: /root/bkup_krb5.tar.gz
+
+  - name: "Copy fichero samba en otra ruta local"
+    archive:
+      path:
+      - /etc/samba/smb.conf
+      dest: /root/bkup_smb_conf.tar.gz

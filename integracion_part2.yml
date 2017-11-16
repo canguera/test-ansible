@@ -1,0 +1,1 @@
+- include: ./playbooks/integracion/intADfase8sssd.yml

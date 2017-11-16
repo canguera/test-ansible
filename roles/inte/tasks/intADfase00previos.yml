@@ -13,3 +13,10 @@
   - name: "Cambio Time zone Europe/Madrid"
     timezone:
       name: Europe/Madrid
+
+  - name: "Insertar vars en fichero ntp"
+    lineinfile:
+      path: /etc/ntp.conf
+      regexp: 'Prueba'
+      line: 'Prueba'
+      

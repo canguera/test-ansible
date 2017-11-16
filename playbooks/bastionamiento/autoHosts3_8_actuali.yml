@@ -9,4 +9,6 @@
     command: /sbin/chkconfig rhnsd off
 
   - name: "Actaulizar "
-    yum: name='*' state=latest
+    yum:
+      name: '*'
+      state: latest

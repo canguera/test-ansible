@@ -1,0 +1,8 @@
+- include: ./playbooks/integracion/intADfase0previus.yml
+- include: ./playbooks/integracion/intADfase1ntp.yml
+- include: ./playbooks/integracion/intADfase3resolv.yml
+- include: ./playbooks/integracion/intADfase2etho.yml
+- include: ./playbooks/integracion/intADfase4hosts.yml
+- include: ./playbooks/integracion/intADfase5network.yml
+- include: ./playbooks/integracion/intADfase6krb.yml
+- include: ./playbooks/integracion/intADfase7samba.yml

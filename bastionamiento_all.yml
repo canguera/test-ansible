@@ -1,0 +1,12 @@
+- include: ./playbooks/bastionamiento/bastHostsfase0bkp.yml
+- include: ./playbooks/bastionamiento/bastHosts3_1_users.yml
+- include: ./playbooks/bastionamiento/bastHosts3_2_autentif.yml
+- include: ./playbooks/bastionamiento/bastHosts3_4_arransist.yml
+- include: ./playbooks/bastionamiento/bastHosts3_5_mensa.yml
+- include: ./playbooks/bastionamiento/bastHosts3_6_lan.yml
+- include: ./playbooks/bastionamiento/bastHosts3_7_seguri.yml
+- include: ./playbooks/bastionamiento/bastHosts3_8_actuali.yml
+- include: ./playbooks/bastionamiento/bastHosts3_9_service.yml
+- include: ./playbooks/bastionamiento/bastHosts3_10_procedi.yml
+- include: ./playbooks/bastionamiento/bastHosts4_1_audit.yml
+- include: ./playbooks/bastionamiento/bastHosts4_2_log.yml

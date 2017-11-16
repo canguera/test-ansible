@@ -2,7 +2,13 @@
   remote_user: "{{ BECOME_USER }}"
   become: yes
   become_method: sudo
-  
+
   tasks:
   - name: "Reemplazar fichero krb5"
     template: src=../templates/krb5.conf.j2 dest=/etc/krb5.conf
+
+  - name: "Agregar opcion on en  oddjobd en lista servicios "
+    command: /sbin/chkconfig  oddjobd on
+
+  - name: "Reiniciar servicio  oddjobd"
+    service: name= oddjobd state=restarted

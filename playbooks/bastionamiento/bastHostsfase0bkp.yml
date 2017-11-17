@@ -4,6 +4,13 @@
   become_method: sudo
 
   tasks:
+
+  - name: "Instalar paquete libselinux-python"
+    yum: name=libselinux-python state=present
+
+  - name: "Añadir disabled en ficchero SELINUX"
+    selinux: state=disabled
+
   - name: "Copy fichero passwd y shadow en otra ruta local"
     archive:
       path:

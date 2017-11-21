@@ -9,7 +9,7 @@
       - "shutdown"
 
   tasks:
-  - name: "Obtener lista user a bloquear"
+  - name: "Obtener lista user a bloquear menos root"
     shell: "awk -F: '$3 < 500 {print $1}' /etc/passwd | grep -v root"
     register: users_to_lock
 

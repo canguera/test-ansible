@@ -140,5 +140,8 @@
   - name: "Modificar owner y permis fichero grub"
     file: path=/boot/grub/grub.conf owner=root group=root mode=700
 
+  - name: "Actualiza algoritmo de passwords"
+    shell: "authconfig --passalgo=sha512 --update"
+
   - name: "Definir de nuevo la ruta de ejecucion de root en crontab"
     shell: "crontab /etc/crontab"
